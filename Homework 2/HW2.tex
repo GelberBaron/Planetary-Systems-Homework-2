@@ -1,0 +1,329 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{framed}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xparse}
+\usepackage{ulem}
+\usepackage{bbm}
+\geometry{a4paper,left=15mm,right=15mm, top=1cm, bottom=2cm}
+\author{Bennet Grützner (S3793613)}
+\title{Homework 2 - Planetary Systems}
+
+\renewcommand{\vector}[1] {
+\begin{pmatrix}
+#1
+\end{pmatrix}
+}
+\DeclareDocumentCommand{\Mat}{ O{m} O{n}}{\text{Mat}_{#1 \times #2}}
+\DeclareDocumentCommand{\MatR}{ O{m} O{n}}{\text{Mat}_{#1 \times #2} (\mathbb{R})}
+\DeclareDocumentCommand{\MatC}{ O{m} O{n}}{\text{Mat}_{#1 \times #2} (\mathbb{C})}
+\DeclareDocumentCommand{\MatQR}{ O{n}}{\text{Mat}_{#1 \times #1} (\mathbb{R})}
+\DeclareDocumentCommand{\MatQC}{ O{n}}{\text{Mat}_{#1 \times #1} (\mathbb{C})}
+\DeclareDocumentCommand{\MatQ}{ O{n}}{\text{Mat}_{#1 \times #1}}
+\DeclareDocumentCommand{\Reihe}{ O{\overrightarrow{x}} O{n} O{, } O{}}{{#4} {#1}_1 #3 ... #3 {#4} {#1}_{#2}}
+\newcommand{\nullvec}{\overrightarrow{0}}
+\newcommand{\Rang}[1]{\text{Rang}(#1)}
+\newcommand{\dint}{\text{d}}
+\newcommand{\Dint}{\text{D}}
+\newcommand{\sprod}[1]{\left\langle #1 \right\rangle}
+\newcommand{\withoutnull}{\backslash \{ 0 \} }
+\newcommand{\diag}{\text{diag}}
+\newcommand{\Det}{\text{Det}}
+\newcommand{\nex}{\text{n. ex.}}
+\renewcommand{\u}[1]{\underline{#1}}
+\newcommand{\dul}[1]{\uuline{#1}}
+\DeclareDocumentCommand{\ddt}{O{}}{\frac{\dint^{#1}}{\dint t^{#1}}}
+\newcommand{\Nabla}{\ul{\bigtriangledown}}
+\newcommand{\Laplace}{\Delta}
+\newcommand{\grad}{\text{grad }}
+\renewcommand{\div}{\text{div }}
+\newcommand{\rot}{\text{rot }}
+\newcommand{\const}{\text{const.}}
+\newcommand{\rvec}{\u{r}}
+\DeclareDocumentCommand{\ev}{ O{} O{}}{\u{e}_{#1}^{#2}}
+\newcommand*{\formatedgraphic}[3]
+{
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.75]{#1}
+	 \caption[#2]{#2. #3}
+	 \label{fig:#2}
+\end{figure}
+}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Atmospheric properties}
+
+\subsection{Pressure scale height}
+
+\paragraph{Part (a)}
+
+The pressure scale height near the surface is given by 
+
+$$H(z) = \frac{k T(z)}{g(z) \mu_a m_{amu}}$$
+
+Because I was not able to find any information about $\mu_a$ or a value for it, I ignored it. In fact the book says, that $\mu_a$ combined with $m_{amu}$ is the mass per molecule.
+
+\textbf{(1) - Earth}
+
+$T(0) = 288 K$ \\
+$m_{amu} = 0.8 * 46.48 * 10^{-27} + 0.2 * 53.12 * 10^{-27} = 47.8 * 10^{-27}$ (80 \% N${}_2$, 20 \% O${}_2$) \\
+$k = 1.38 * 10^{-23}$ \\
+$g(0) = 9.81 m/s^2$ \\
+
+$H(0) = 8.48 km$
+
+\textbf{(2) - Venus}
+
+$T(0) = 737 K$ \\
+$m_{amu} = 73.04 * 10^{-27}$ (100 \% CO${}_2$) \\
+$k = 1.38 * 10^{-23}$ \\
+$g(0) = 8.87 m/s^2$ \\
+
+
+$H(0) = 15.70 km$
+
+\textbf{(3) - Mars}
+
+$T(0) = 215 K$ \\
+$m_{amu} = 73.04 * 10^{-27}$ (100 \% CO${}_2$) \\
+$k = 1.38 * 10^{-23}$ \\
+$g(0) = 3.86 m/s^2$ \\
+
+$H(0) = 10.52 km$
+
+\textbf{(4) - Titan}
+
+$T(0) = 93.7 K$ \\
+$m_{amu} = 46.48 * 10^{-27}$ (100 \% N${}_2$) \\
+$k = 1.38 * 10^{-23}$ \\
+$g(0) = 1.35 m/s^2$ \\
+
+$H(0) = 2.061 km$
+
+\paragraph{Part (b)}
+
+The formula stays the same as in part (a).
+
+\textbf{(1) - TRAPPIST-1e}
+
+$T(0) = 246 K$ \\
+$m_{amu} = 0.8 * 46.48 * 10^{-27} + 0.2 * 53.12 * 10^{-27} = 47.8 * 10^{-27}$ (80 \% N${}_2$, 20 \% O${}_2$) \\
+$k = 1.38 * 10^{-23}$ \\
+$g(0) = 9.1 m/s^2$ \\
+
+$H(0) = 7.80 km$
+
+\textbf{(2) - TRAPPIST-1f}
+
+$T(0) = 219 K$ \\
+$m_{amu} = 0.8 * 46.48 * 10^{-27} + 0.2 * 53.12 * 10^{-27} = 47.8 * 10^{-27}$ (80 \% N${}_2$, 20 \% O${}_2$) \\
+$k = 1.38 * 10^{-23}$ \\
+$g(0) = 6.1 m/s^2$ \\
+
+$H(0) = 10.36 km$
+
+\textbf{(3) - LHS 1140b}
+
+$T(0) = 230 K$ \\
+$m_{amu} = 0.8 * 46.48 * 10^{-27} + 0.2 * 53.12 * 10^{-27} = 47.8 * 10^{-27}$ (80 \% N${}_2$, 20 \% O${}_2$) \\
+$k = 1.38 * 10^{-23}$ \\
+$g(0) = 31.8 m/s^2$ \\
+
+$H(0) = 2.09 km$
+
+\paragraph{Part (c)}
+
+Hot Jupiters usually have a low $m_{amu}$ and a height temperatures. That means, that their atmosphere has a low $H$, and so is fairly thin. A thin atmosphere means then a low optical thickness (opacity) and thus a higher transmission. That means, that we can observe the effect on a larger scale.
+
+\paragraph{Part (d)}
+
+If we compare the values for $m_{amu}$ for the cases Earth, Venus and Titan, we see that it ranges from $46.5 * 10^{-27} kg$ to $73 * 10^{-27}$ which is a factor of roughly 1.5. On the other hand, the temperature on the Venus is roughly three times higher than on Earth (small Greenhouse effect) or on Mars (to small atmosphere for Greenhouse effect). So, the largest uncertainty is a runaway Greenhouse effect like on Venus, which increases the atmospheric pressure scale height enormously.
+
+\paragraph{Part (e)}
+
+If we assume the atmospheric pressure scale height to be constant (which is an ok assumption near the surface), we can use the formula
+
+$$P(z) = P(0) e^{-z/H_0}$$
+
+On Earth, $P(0)$, so the surface pressure, is 1.014 bar. The atmospheric pressure scale height from part (a) is 8.48 km.
+
+\textbf{La Palma}
+
+$z = 2.423 km$
+$z/H_0 = 0.286$
+
+$P(z) = 0.762 bar$
+
+\textbf{Sagarmatha}
+
+$z = 8.848 km$
+$z/H_0 = 1.043$
+
+$P(z) = 0.357 bar$
+
+\textbf{Olympus Mons}
+
+Here we have to take the values from Mars. The surface pressure is 6.36 mbar, $H_0$ is (according to (a)) 10.52 km.
+
+$z = 21.3 km$
+$z/H_0 = 2.0247$
+
+$P(z) = 0.84 mbar$
+
+\subsection{Photochemistry and chemical composition}
+
+\paragraph{Part (a)}
+
+The equation (4.61) is:
+
+$$k_{r3} = \frac{2 R}{\overline{v}_0} k_{r2}^2 \approx 10^{-12} k_{r2}^2 \approx 4 \times 10^{-32} \frac{T}{300 K} cm^6 s^{-1}$$
+
+The equation (4.62) is:
+
+$$[M] = \frac{k_{r2}}{k_{r3}} = 5 \times 10^{21} cm^{-3}$$
+
+To proof (4.61), we have to use the definition of $k_{r2}$ (eq. (4.59)):
+
+$$k_{r2} = c_1 \left(\frac{T}{300 K}\right)^{c_2} e^{-E_0 / kT}$$
+
+$k_{r2}$ describes, how oven two compound collide. The probability of two collisions at the same time and place has then the probability of $k_{r2}^2$. This is further modified by the duration of the collisions: The collisions haven't to be at the exact time, but the second one has to be in the time frame of the first. The duration of a collision is $\frac{2 R}{\overline{v}_0}$.
+
+To derive (4.62), we have to take a look at the value of both the reaction rate of (2) and (3). The upper limit of the reaction rate $k_{r2}$ is determined by the cross-section and is $k_{gk} = 2 \times 10^{-10} \sqrt{T/300K}$. This divided by the reaction rate $k_{r3}$, given in (4.61), is the value of (4.62).
+
+\paragraph{Part (b)}
+
+In chemical equilibrium, the outgoing and the incoming amount of particles has to be the same. 
+
+For (4.63), we have to take a look on all reaction involving atomic oxygen. Atomic oxygen is in the atmosphere produced by the dissociation of double-oxygen (O${}_2$), and by the dissociation of ozone (O${}_3$). The atomic oxygen is used to produce double-oxygen from ozone, and by producing ozone from double oxygen. The direct reaction of two atoms to double-oxygen is negligible. As a sum over the reaction rate, we get (4.63). To calculate the equilibrium situation, we have to set this equal to zero (no net production).
+
+For (4.63), we have to look at the on the ozone reaction. The only way of producing ozone is to add a atomic oxygen to double-oxygen, which also uses a catalyst. The ways to decompose ozone are dissociation by UV photons, or the reaction with a atomic oxygen to two double-oxygen molecules. This three reaction together are summed up in equation (4.64). To calculate the equilibrium situation, we again have to set the net sum to zero.
+
+\paragraph{Part (c)}
+
+In figure (4.34) (not (4.40)!) we can see the abundance of all three forms of oxygen in the atmosphere in dependence of the altitude. The formula (4.64) we can write in the equilibrium situation as:
+
+$$0 = k_{r4} [O][O_2][M] - k_{r6}[O][O_3] - J_5(60)[O_3]$$
+
+We can rearrange this to get an expression for $[O_3]$:
+
+$$[O_3] = \frac{k_{r4} [O][O_2][M]}{k_{r6}[O] - J_5(60)}$$
+
+Now we can put in the value (all values in cgs):
+
+$$k_{r4} = 6 \times 10^{-34} \left(\frac{T}{300K}\right)^{-2.3}$$
+$$k_{r6} = 8 \times 10^{-12} e^{-2060/T}$$
+$$J_5(60) = 4 \times 10^{-3}$$
+$$[O] = 6 \times 10^{10}$$
+$$[O_2] = 2 \times 10^{15}$$
+
+I assume a temperature of 256 K at 60 km altitude. Then we get the values for the $k$ reaction rates of:
+
+$$k_{r4} = 8.6 \times 10^{-34}$$
+$$k_{r6} = 2.6 \times 10^{-15}$$
+
+To calculate the Loschmidt's number at 60 km, we need the pressure. According to the pressure scale height for earth calculated in 1.1(a) ($H_0$ = 8.48), the pressure drops from 1.013 bar to $8.566 \times 10^{-4}$ bar. So, we get a Loschmidt's number of
+
+$$[M] = L = \frac{p}{k T} = 2.4 \times 10^{17} m^{-3} = 2.4 \times 10^{11} cm^{-3}$$
+
+Then we can put in this all in the expression above and get:
+
+$$[O_3] = \frac{2.5 \times 10^{6}}{5.2 \times 10^{-5} + 4 \times 10^{-3}} = 6.2 \times 10^{8}$$
+
+This is not exactly the result in the diagram ($2 \times 10^9$), but fairly close.
+
+\paragraph{Part (d)}
+
+Ozone is quite important for the living conditions on the earth's surface. It protects us from the most of the UV radiation of the sun. Because the UV radiation is able to dissociate molecules, even the organic ones, UV radiation is dangerous for most form of life. By the ozone reaction circle the most of UV light is absorbed and emitted as light with lower energies.
+
+\section{Impact Crater Counting}
+
+\subsection{Introduction}
+
+\paragraph{Part (1)}
+
+The most craters have to moon Callisto. Thus, it is the oldest of the moons and was probably created before the heavy bombardment period (4.5 Gyr ago). Ganymed has some regions which are saturated with craters, so we can assume that it is the second oldest planet. Io and Europa are more or less without craters, which shows us that they are younger moons.
+
+\paragraph{Part (2)}
+
+Callisto is a ice moon, and show a relatively homogeneous saturation with craters. This shows us, that Callisto have and had a low tectonic activity. Probably, the tectonic activity is negligible. 
+
+Ganymed is bigger and shows some surface structure, which indicates tectonic activity. Ganymed was probably create before the heavy bombardment period (this would explain the crater-saturated regions), but had afterwards ongoing tectonic activity and volcanism. The volcanism would then explain the areas with lower crater density. In its history, Ganymed has probably similarities with the earth's moon.
+
+Europa has a very low crater density, which would indicate an surface age of 90 Million years. Either Europa is very young or it has a mechanism to renew its surface. However, on an ice moon volcanism would be a bad explanation for that, so the exact process is unclear.
+
+Io has also very few craters. Various space mission detected very active tectonics and widespread volcanism. In fact, Io is the celestial body with the highest volcanism activity in our solar system. 
+
+\subsection{Surface reprocessing}
+
+\paragraph{Part (1)}
+
+On figure 2 in the homework sheet, we can clearly distinguish between two different areas on Mars' surface. In the upper half, we have a blue (so deeper) and flat region. The lower half shows an area which has more craters and red (so higher). The flatter region is younger, and probably a result of volcanism or tectonic activity (or both).
+
+However, there is also a third region, which is smaller. The region is located at the left half of the image between the blue and the red region. This region has few craters, but is a bit higher than the red region. Additionally it contains mountains. This region was probably created by volcanism. The mountains seem to be the volcanoes. Because the volcanoes are still present, the surface in this region is probably the youngest.
+
+\paragraph{Part (2)}
+
+You can see the results on the picture below.
+
+\formatedgraphic{marssurface.png}{How I would label and distinguish the regions. 1 is the oldest regions, 2 the middle one and 3 the youngest}{}
+
+\paragraph{Part (3)}
+
+The area one (so the oldest) is probably not really altered since the heavy bombardment period, because it is saturated with craters.
+
+The area two (the middle old) had probably large tectonic activity in the past. The tectonics not only removed the crates, but also lowered the area a little bit.
+
+The area three (the youngest) is probably formed by volcanism. The volcanoes are still present, and the area is slightly higher than the original surface because of the cooled lava material.
+
+\subsection{Age dating using cratering}
+
+\paragraph{part (1)}
+
+I used five different steps. For the northern hemisphere, I hadn't find any craters bigger than 64 km, however in the southern hemisphere there are such craters.
+
+Northern Hemisphere results:
+
+Smaller than 8 km: 26 \\
+Between 8 and 16 km: 12 \\
+Between 16 and 32 km: 7 \\
+Between 32 and 64 km: 4 \\
+Larger than 64 km: 0
+
+Southern Hemisphere results:
+
+Smaller than 8 km: 32 \\
+Between 8 and 16 km: 34 \\
+Between 16 and 32 km: 34 \\
+Between 32 and 64 km: 20 \\
+Larger than 64 km: 4
+
+\paragraph{part (2)}
+
+For the northern hemisphere, the normalization factor is 1.23. For the southern hemisphere, the normalization factor is 1.29.
+
+The normalized numbers for the northern hemisphere are $[32, 14.8, 8.6, 4.9]$. For the southern hemisphere the numbers are $[41.3, 43.8, 43.8, 25.8, 5.2]$.
+
+For the northern hemisphere, the best fitting age is 3.7 GYr. For the southern hemisphere, I ignored the first two numbers, because this is probably a mistake of counting or the image, and I found the best fitting age to be 4.4 Gyr.
+
+\paragraph{part (3)}
+
+My estimates are probably not so well. While the counting for the northern hemisphere showed at least a bit of exponential behaviour, the counting for the southern hemisphere showed not a exponential behaviour, but the limits of counting manually. 
+
+I don't know how it is meant, "be quantitative", but probably the (estimated) error bars guessed. I would estimate my error bars to be $\pm$ 1 Gyr. This is distance to the next line, which I have seen as "less fitting".
+
+It fits roughly with the figure.
+
+\end{document}
